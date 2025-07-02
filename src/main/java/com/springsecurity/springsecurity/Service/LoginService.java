@@ -19,6 +19,12 @@ public class LoginService {
     public void createUser(Login login)
     {
        loginRepository.save(login);
+
+    }
+
+    public void deleteById(Long id)
+    {
+        loginRepository.deleteById(id);
     }
 
 }

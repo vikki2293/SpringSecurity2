@@ -5,10 +5,7 @@ import com.springsecurity.springsecurity.Service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SecurityController {
@@ -24,8 +21,16 @@ public class SecurityController {
     }
 
     @PostMapping("/create")
-    public void createLogin(@RequestBody Login login)
+    public String createLogin(@RequestBody Login login)
     {
     service.createUser(login);
+        return " username "+ login.getUsername() +" created";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deletebyId(@PathVariable Long id)
+    {
+        service.deleteById(id);
+        return "user got Deleted";
     }
 }

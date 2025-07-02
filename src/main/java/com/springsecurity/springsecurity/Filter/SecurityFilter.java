@@ -20,7 +20,7 @@ public class SecurityFilter {
     public SecurityFilterChain filterChain(HttpSecurity security) throws Exception
     {
         security.csrf(csrf -> csrf.disable()).
-                authorizeHttpRequests(auth -> auth.requestMatchers("/","/create").
+                authorizeHttpRequests(auth -> auth.requestMatchers("/","/create","/delete**").
                 permitAll().anyRequest().authenticated()).
                 httpBasic(httpbasic ->{}).
                 formLogin(form -> form.permitAll());
